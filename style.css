@@ -1,0 +1,175 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family:Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family:Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+h2{
+    text-align:center;
+  }
+
+li{
+    margin-top: 20px;
+}
+
+img{
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+  }
+
+.label{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column for mobile */
+  gap: 10px;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 25px;
+  display: block;
+  border: 5px solid blue;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  color: yellow;
+  font-weight: bold;
+  padding: 5px 0;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+
+
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px; /* Slightly more spacing between figures */
+  }
+
+  figure img {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 80%; /* Shrinks image size */
+    max-width: 300px;
+    margin: 0 auto; /* Center the image */
+    display: block;
+  }
+
+  .grid figure:last-child {
+    grid-column: span 2; /* Full width */
+  }
+
+  .grid figure:last-child img {
+    aspect-ratio: 3 / 2;
+    border-radius: 50% / 40%;
+    max-width: 500px; /* Makes the oval image smaller */
+  }
+
+  .grid figure:last-child figcaption {
+    border-bottom-left-radius: 50% / 40%;
+    border-bottom-right-radius: 50% / 40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+  }
+
+  /* Remove border radius from all images */
+  figure img {
+    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Remove border radius from all figcaptions */
+  figcaption {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Make every third figure span both columns */
+  .grid figure:nth-of-type(3n) {
+    grid-column: span 2;
+  }
+
+  /* Optional: Ensure images don’t get taller than needed */
+  .grid figure:nth-of-type(3n) img {
+    height: auto;
+    aspect-ratio: auto; /* Remove previous aspect-ratio from tablet view */
+    border-radius: 0 !important;
+  }
+
+  /* Also remove border-radius from the last figure in case tablet styles persist */
+  .grid figure:last-child img,
+  .grid figure:last-child figcaption {
+    border-radius: 0 !important;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222; /* Dark background */
+    color: #ffeb3b; /* Light yellow-ish text for contrast */
+    border: 5px solid black; /* Border around the figure itself */
+  }
+
+  figure img {
+    border-color: black; /* Image border becomes black */
+  }
+
+  figcaption {
+    background-color: #222; /* Match figure background */
+    color: #ffeb3b; /* Ensure caption text is yellowish */
+  }
+}
+
+
+
+
